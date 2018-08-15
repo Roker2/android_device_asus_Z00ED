@@ -6,7 +6,7 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/asus/msm8916-common/overlay/lineage
 
-PRODUCT_NAME := lineage_Z00ED
+PRODUCT_NAME := aosp_Z00ED
 PRODUCT_DEVICE := Z00ED
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Zenfone 2 Laser
