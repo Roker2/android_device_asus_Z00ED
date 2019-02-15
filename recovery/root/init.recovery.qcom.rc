@@ -1,27 +1,18 @@
-on init
-    wait /dev/battery_data
-    wait /dev/ion
-    wait /dev/qseecom
-    wait /dev/vm_bms
+on enable-low-power
+    start qcom-power
 
-    chown system system /dev/battery_data
-    chown system system /dev/ion
-    chown system drmrpc /dev/qseecom
-    chown system system /dev/vm_bms
+    rm /data/misc/perfd/default_values
+    rm /data/system/perfd/default_values
+    start perfd
 
-    chown root system /sys/class/power_supply/bms/current_now
-    chown root system /sys/class/power_supply/bms/voltage_ocv
-    chmod 0664 /sys/class/power_supply/bms/current_now
-    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
+    setprop sys.io.scheduler "bfq"
 
-    start qseecomd
-    start vm_bms
+on charger
+    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
 
-service qseecomd /sbin/qseecomd
-    disabled
+on property:sys.boot_completed=1
+    trigger enable-low-power
 
-service vm_bms /sbin/vm_bms
-    disabled
-
-on property:ro.twrp.boot=1
-    write /proc/boot_completed_prop 1
+on property:init.svc.recovery=running
+    trigger enable-low-power
