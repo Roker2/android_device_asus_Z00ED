@@ -61,6 +61,7 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CONFIG := ze500kl-custom_defconfig
 TARGET_KERNEL_SOURCE := kernel/asus/msm8916
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.selinux=permissive
+TARGET_PREBUILT_KERNEL := device/asus/Z00ED/zImage
 
 # Crypto
 #TARGET_HW_DISK_ENCRYPTION := true
