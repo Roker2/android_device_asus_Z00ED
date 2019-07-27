@@ -82,6 +82,7 @@ TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_INCLUDE_CRYPTO := true
 TW_THEME := portrait_hdpi
+TARGET_RECOVERY_FSTAB := device/asus/Z00ED/recovery/root/etc/recovery.fstab
 
 #OrangeFox flags
 FOX_SUPPORT_TREBLE_ONLY := false
